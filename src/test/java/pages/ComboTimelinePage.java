@@ -24,7 +24,7 @@ public class ComboTimelinePage extends BasePage {
     }
 
     public boolean isPageOpened() {
-            return driver.findElement(pageHeader).isDisplayed();
+        return driver.getCurrentUrl().contains("combo-timeline") && driver.findElement(pageHeader).isDisplayed();
     }
 
     public void acceptCookiesIfDisplayed() {
@@ -33,7 +33,7 @@ public class ComboTimelinePage extends BasePage {
             wait.until(ExpectedConditions.elementToBeClickable(acceptCookiesButton)).click();
             wait.until(ExpectedConditions.invisibilityOfElementLocated(cookieDialog));
         } catch (TimeoutException e) {
-            // cookie banner was not displayed
+            System.out.println("Cookie banner was not displayed");
         }
     }
 
